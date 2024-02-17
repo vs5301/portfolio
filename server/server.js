@@ -5,6 +5,8 @@ const app = express()
 const globalErrorHandler = require("./middlewares/globalErrHandler")
 const skillsRoute = require("./routes/skillRoutes")
 const projectsRoute = require("./routes/projectRoutes")
+const certificatesRoute = require('./routes/certificateRoutes')
+const resumeRoute = require('./routes/resumeRoutes')
 
 // middlewares
 app.use(express.json())
@@ -17,6 +19,12 @@ app.use("/api/v1/projects", projectsRoute)
 
 // skills route
 app.use("/api/v1/skills", skillsRoute)
+
+// certificates route
+app.use("/api/v1/certificates", certificatesRoute)
+
+// resume route
+app.use("/api/v1/resume", resumeRoute)
 
 app.get('/', (req, res) => {
     res.json({

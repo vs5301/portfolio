@@ -40,7 +40,7 @@ const getSkillsCtrl = async (req, res, next) => {
 const getSkillCtrl = async (req, res, next) => {
     try {
         // Find id from params
-        const id = req.params
+        const { id } = req.params
         const skill = await Skill.findById(id).populate("projects")
         res.json(skill)
     } catch (error) {
@@ -52,7 +52,7 @@ const getSkillCtrl = async (req, res, next) => {
 const deleteSkillCtrl = async (req, res, next) => {
     try {
         // Find id from params
-        const id = req.params
+        const { id } = req.params
         await Skill.findByIdAndDelete(id)
         res.status(200).json({
             status: "success",
@@ -67,7 +67,7 @@ const deleteSkillCtrl = async (req, res, next) => {
 const updateSkillCtrl = async (req, res, next) => {
     try {
         // Find id from params
-        const id = req.params
+        const { id } = req.params
         const skill = await Skill.findByIdAndUpdate(id, req.body, {
             new: true,
             runValidators: true,

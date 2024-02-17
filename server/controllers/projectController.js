@@ -69,7 +69,7 @@ const getProjectsCtrl = async (req, res, next) => {
 const getProjectCtrl = async (req, res, next) => {
     try {
         // Find id in params
-        const id = req.params
+        const { id } = req.params
         const project = await Project.findById(id).populate("skills")
         res.json(project)
     } catch (error) {
@@ -81,7 +81,7 @@ const getProjectCtrl = async (req, res, next) => {
 const deleteProjectCtrl = async (req, res, next) => {
     try {
         // Find id in params
-        const id = req.params
+        const { id } = req.params
         await Project.findByIdAndDelete(id).populate("skills")
         res.status(200).json({
             status: "success",
@@ -96,8 +96,17 @@ const deleteProjectCtrl = async (req, res, next) => {
 const updateProjectCtrl = async (req, res, next) => {
     try {
         // Find id in params
-        const id = req.params
-        const project = await Project.findByIdAndUpdate(id, req.body, {
+        const { id } = req.params
+        const { skills, ...updateData } = req.body
+    
+         // convert skill names to skill ids
+        const skillIds = await Promise.all(skills.map(async (skillName) => {
+            return await findSkill(skillName)
+        }))
+
+        updateData.skills = skillIds
+
+        const project = await Project.findByIdAndUpdate(id, updateData, {
             new: true,
             runValidators: true,
         })
