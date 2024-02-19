@@ -23,6 +23,16 @@ const skillSchema = mongoose.Schema({
             name: String,
             Link: String,
         }
+    ],
+    certificates: [
+        {
+            certificateId: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Certificate"
+            },
+            name: "String",
+            link: "String"
+        }
     ]
 }, {
     timestamps: true,

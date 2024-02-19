@@ -34,7 +34,7 @@ const addResumeCtrl = async (req, res, next) => {
         const resume = new Resume({
             title: title,
             description: description,
-            resumeKey: key,
+            key: key,
         })
 
         const savedResume = await resume.save()
@@ -54,12 +54,13 @@ const addResumeCtrl = async (req, res, next) => {
 // get resume
 const getResumeCtrl = async (req, res, next) => {
     try {
-        const resume = await Resume.findOne({ resumeKey })
+        const key = "Resume.pdf"
+        const resume = await Resume.findOne({ key: key })
         if (!resume) {
             next(new AppErr("Resume not found", 400))
         }
 
-        const s3Url = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${resume.resumeKey}`
+        const s3Url = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${resume.key}`
         res.status(200).json({
             status: "success",
             data: {

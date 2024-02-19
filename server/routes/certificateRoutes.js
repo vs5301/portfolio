@@ -13,7 +13,7 @@ certificatesRoute.get("/", getCertificatesCtrl)
 certificatesRoute.get("/:id", getCertificateCtrl)
 
 // DELETE /api/v1/certificates/:id
-certificatesRoute.delete(":/id", deleteCertificateCtrl)
+certificatesRoute.delete("/:id", deleteCertificateCtrl)
 
 // UPDATE /api/v1/certificates/:id
 certificatesRoute.put("/:id", updateCertificateCtrl)

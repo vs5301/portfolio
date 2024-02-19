@@ -40,6 +40,7 @@ const createCertificateCtrl = async (req, res, next) => {
                 skill.certificates.push({
                     certificateId: certificate._id,
                     name: certificate.name,
+                    link: certificate.link
                 })
                 await skill.save()
             }
