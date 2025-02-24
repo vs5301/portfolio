@@ -9,8 +9,8 @@ projectsRoute.post("/", createProjectCtrl)
 // GET /api/v1/projects
 projectsRoute.get("/", getProjectsCtrl)
 
-// GET /api/v1/projects/:id
-projectsRoute.get("/:id", getProjectCtrl)
+// GET /api/v1/projects/:name
+projectsRoute.get("/:name", getProjectCtrl)
 
 // DELETE /api/v1/projects/:id
 projectsRoute.delete("/:id", deleteProjectCtrl)

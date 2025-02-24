@@ -1,12 +1,14 @@
 const Resume = require("../models/Resume")
-const aws = require("aws-sdk")
+const { S3 } = require("@aws-sdk/client-s3");
 const { v4: uuidv4 } = require("uuid")
 const { AppErr, appErr } = require("../utils/appErr")
 
 // Configure aws
-const s3 = new aws.S3({
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+const s3 = new S3({
+    credentials: {
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    },
 })
 
 // add resume
@@ -29,7 +31,7 @@ const addResumeCtrl = async (req, res, next) => {
 
     try {
         // fetch resume from s3
-        const data = await s3.getObject(params).promise()
+        const data = await s3.getObject(params)
 
         const resume = new Resume({
             title: title,

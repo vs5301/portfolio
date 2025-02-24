@@ -69,8 +69,8 @@ const getProjectsCtrl = async (req, res, next) => {
 const getProjectCtrl = async (req, res, next) => {
     try {
         // Find id in params
-        const { id } = req.params
-        const project = await Project.findById(id).populate("skills")
+        const { name } = req.params
+        const project = await Project.findOne({name: name}).populate("skills")
         res.json(project)
     } catch (error) {
         next(new AppErr(error.message, 500))

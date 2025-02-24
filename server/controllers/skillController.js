@@ -29,7 +29,8 @@ const createSkillCtrl = async (req, res, next) => {
 // Get all Skills
 const getSkillsCtrl = async (req, res, next) => {
     try {
-        const skills = await Skill.find().populate("projects")
+        const { category } = req.params
+        const skills = await Skill.find({category: category}).populate("projects")
         res.json(skills)
     } catch (error) {
         next(new AppErr(error.message, 500))
@@ -40,8 +41,8 @@ const getSkillsCtrl = async (req, res, next) => {
 const getSkillCtrl = async (req, res, next) => {
     try {
         // Find id from params
-        const { id } = req.params
-        const skill = await Skill.findById(id).populate("projects")
+        const { name } = req.params
+        const skill = await Skill.findOne({name: name}).populate("projects")
         res.json(skill)
     } catch (error) {
         next(new AppErr(error.message, 500))

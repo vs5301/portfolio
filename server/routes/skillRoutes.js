@@ -7,10 +7,10 @@ const skillsRoute = express.Router()
 skillsRoute.post("/", createSkillCtrl)
 
 // GET /api/v1/skills
-skillsRoute.get("/", getSkillsCtrl)
+skillsRoute.get("/all/:category", getSkillsCtrl)
 
 // GET /api/v1/skills/:id
-skillsRoute.get("/:id", getSkillCtrl)
+skillsRoute.get("/:name", getSkillCtrl)
 
 // DELETE /api/v1/skills/:id
 skillsRoute.delete("/:id", deleteSkillCtrl)

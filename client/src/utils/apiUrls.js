@@ -1,0 +1,4 @@
+export const SKILL_API_URL = process.env.REACT_APP_SKILL_API_URL;
+export const PROJECT_API_URL = process.env.REACT_APP_PROJECT_API_URL
+export const CERTIFICATES_API_URL = process.env.REACT_APP_PCERTIFICATES_API_URL
+export const RESUME_API_URL = process.env.REACT_APP_PRESUME_API_URL
