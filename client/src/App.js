@@ -6,6 +6,8 @@ import Experience from './components/pages/Experience/Experience';
 import Skill from './components/modules/Skill/Skill';
 import Project from './components/modules/Project/Project';
 import Resume from './components/pages/Resume/Resume';
+import Skills from './components/pages/Skills/Skills';
+import Projects from './components/pages/Projects/Projects';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         <Route path='/project/:name' element={<Project />} />
         <Route path='/skill/:name' element={<Skill />} />
         <Route path='/resume' element={<Resume />} />
+        <Route path='/skills' element={<Skills />} />
+        <Route path='/projects' element={<Projects />} />
       </Routes>
     </BrowserRouter>
   )

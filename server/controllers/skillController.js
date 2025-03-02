@@ -6,16 +6,19 @@ const createSkillCtrl = async (req, res, next) => {
     const { name, description, category } = req.body
     try {
         // check if skill exists
-        const skillFound = await Skill.findOne({ name })
+        const skillFound = await Skill.findOne({ name: name })
         if (skillFound) {
             return next(appErr("Skill already exists", 400))
         }
+
+        const imageUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${name}.webp`
 
         // Create skill
         const skill = await Skill.create({
             name,
             description,
             category,
+            imageUrl
         })
         res.status(200).json({
             status: "success",
@@ -69,7 +72,13 @@ const updateSkillCtrl = async (req, res, next) => {
     try {
         // Find id from params
         const { id } = req.params
-        const skill = await Skill.findByIdAndUpdate(id, req.body, {
+        const { name } = req.body
+        const imageUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${name}.webp`
+        const updateData = {
+            ...req.body,
+            imageUrl
+        }
+        const skill = await Skill.findByIdAndUpdate(id, updateData, {
             new: true,
             runValidators: true,
         })

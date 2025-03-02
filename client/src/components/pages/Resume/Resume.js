@@ -1,6 +1,20 @@
+import { useContext, useEffect } from 'react'
 import profile from '../../../assets/Profile.jpg'
+import { resumeContext } from '../../context/ResumeContext/ResumeContext'
 
 export default function Resume() {
+
+    const { fetchResumeAction, resume } = useContext(resumeContext)
+    if (resume != null) {
+        console.log(resume.data.resumeUrl)    
+    }
+    
+
+    useEffect(() => {
+        fetchResumeAction()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <div>
             <div className="container flex flex-col max-w-full bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -13,12 +27,12 @@ export default function Resume() {
                             </div>
                             <div className="flex flex-col">
                                 <div className="flex">
-                                    <a className='ms-48 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301">Github</a>
-                                    <a className='ms-5 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://www.linkedin.com/in/vaibhav-sharma-07357727a">Linkedin</a>
+                                    <a className='ms-48 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301" target='_blank' rel='noreferrer'>Github</a>
+                                    <a className='ms-5 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://www.linkedin.com/in/vaibhav-sharma-07357727a" target='_blank' rel='noreferrer'>Linkedin</a>
                                 </div>
                                 <div className="flex">
                                     <h1 className='ms-48'>Portfolio - </h1>
-                                    <a className="ms-2 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4" href="https://portfolio-ui-e7e5b.web.app/">Link</a>
+                                    <a className="ms-2 text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4" href="https://portfolio-ui-e7e5b.web.app/" target='_blank' rel='noreferrer'>Link</a>
                                 </div>
                             </div>
                         </div>
@@ -84,11 +98,11 @@ export default function Resume() {
                     <div className="mt-5 me-60">
                         <h1>Projects Undertaken - </h1>
                         <ul className="list-inside list-disc ms-20">
-                            <li className='mt-2'>Income Expenses Tracker - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://income-expenses-tracker-client.onrender.com/">Link</a> - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/MERN-Stack/tree/master/income-expenses-tracker">GitHub</a> <br />
+                            <li className='mt-2'>Income Expenses Tracker - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://income-expenses-tracker-client.onrender.com/" target='_blank' rel='noreferrer'>Link</a> - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/MERN-Stack/tree/master/income-expenses-tracker">GitHub</a> <br />
                                 Web application to record finances across multiple accounts. Implements user authentication using 
                                 MongoDB. Server-side API handles various account and transaction actions. </li>
                             <li>
-                                ChatApp - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/ChatApp/releases/download/Version1/app-release.apk">Link</a> - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/ChatApp">GitHub</a><br /> 
+                                ChatApp - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/ChatApp/releases/download/Version1/app-release.apk" target='_blank' rel='noreferrer'>Link</a> - <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://github.com/vs5301/ChatApp">GitHub</a><br /> 
                                 Android application to chat in real-time with users. Uses Google Firebase to authenticate users and facilitate 
                                 chat functionality using Firebase database.
                             </li>
@@ -97,15 +111,17 @@ export default function Resume() {
                     <div className="mt-5">
                         <h1>Certifications - </h1>
                         <ul className="list-inside list-disc ms-20">
-                            <li className='mt-2'>Android App Development – October, 2023 <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://trainings.internshala.com/view_certificate/EC9355EC-8C66-8D10-9CC1-32AB15FD8D01/39hzijbgkl5/">(Link)</a></li>
-                            <li>Full Stack Web Development MERN Stack – January, 2024 <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://www.udemy.com/certificate/UC-5dc3aebf-bad4-4590-a195-825369dca640/">(Link)</a> </li>
+                            <li className='mt-2'>Android App Development – October, 2023 <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://trainings.internshala.com/view_certificate/EC9355EC-8C66-8D10-9CC1-32AB15FD8D01/39hzijbgkl5/" target='_blank' rel='noreferrer'>(Link)</a></li>
+                            <li>Full Stack Web Development MERN Stack – January, 2024 <a className='text-red-500 dark:text-red-400 hover:underline hover:underline-offset-4' href="https://www.udemy.com/certificate/UC-5dc3aebf-bad4-4590-a195-825369dca640/" target='_blank' rel='noreferrer'>(Link)</a> </li>
                         </ul>
                     </div>
                     <h1 className='mt-3'>Android Club Member (07/2019 - 03/2020)</h1>
                     <p> - Worked in club workshops to learn and develop android application skills.</p>
                 </div>
                 <div className="flex justify-center mt-10 mb-20">
-                    <button className='bg-blue-500 dark:bg-blue-400 w-48 text-3xl p-2 animate-bounce rounded-3xl'>Download</button>    
+                    <a href={resume?.data?.resumeUrl} download={resume?.data?.resumeUrl}>
+                        <button onClick={resume?.data.resumeUrl} className='bg-blue-500 dark:bg-blue-400 w-48 text-3xl p-2 font-mono animate-bounce rounded-3xl'>Download</button>
+                    </a>    
                 </div>
                 
             </div>

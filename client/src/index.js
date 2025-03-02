@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SkillContextProvider } from "./components/context/SkillsContext/SkillsContext"
 import { ProjectContextProvider } from "./components/context/ProjectsContext/ProjectsContext"
+import { ResumeContextProvider } from './components/context/ResumeContext/ResumeContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <SkillContextProvider>
     <ProjectContextProvider>
-      <App />
+      <ResumeContextProvider>
+        <App />
+      </ResumeContextProvider>
     </ProjectContextProvider>
   </SkillContextProvider>
 );

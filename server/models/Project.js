@@ -18,6 +18,10 @@ const projectSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    imageUrl: {
+        type: String,
+        required: true
+    },
     skills: [
         {
             skillId: {

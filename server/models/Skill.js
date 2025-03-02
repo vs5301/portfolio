@@ -14,6 +14,10 @@ const skillSchema = mongoose.Schema({
         type: String,
         required: true,
     },
+    imageUrl: {
+        type: String,
+        required: true,
+    },
     projects: [
         {
             projectId: {
@@ -30,8 +34,8 @@ const skillSchema = mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Certificate"
             },
-            name: "String",
-            link: "String"
+            name: String,
+            link: String
         }
     ]
 }, {

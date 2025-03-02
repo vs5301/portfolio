@@ -14,6 +14,11 @@ export default function Experience() {
                             <h3 className="mb-3 font-bold  text-xl font-mono">Apprentice Software Developer@Azure Power Pvt Ltd</h3>
                             <h4 className="mb-3 font-bold  text-base font-mono">May 2024 - Present</h4>
                             <p className=" leading-tight font-mono">Working as apprentice at Azure Power developing data engineering solutions to automate workflows and analyse big data sets. Utilizing latest tech stacks to digitise internal enterprise operations via web and mobile applications.</p>
+                            <p className="leading-tight font-mono">Projects worked on -</p>
+                            <ul className="list-inside list-disc font-mono text-base">
+                                <li><span className="font-mono">Data analysis algorithm automation - Implemented an automated algorithm using Python to collect field device data and process it to calculate KPIs, analyse the results and send notifications to stakeholders.</span></li>
+                                <li><span className="font-mono">Full Stack Application development - Worked on internal full stack application built in Laravel along with Android/iOS applications to create internal workflow environment.</span></li>
+                            </ul>
                         </div>
                     </div>
                     <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
@@ -25,6 +30,11 @@ export default function Experience() {
                             <h3 className="mb-3 font-bold  text-xl font-mono">Campus Intern@Auribises Technologies Pvt Ltd</h3>
                             <h4 className="mb-3 font-bold  text-base font-mono">January 2023 - July 2023</h4>
                             <p className=" leading-tight font-mono">Worked as an intern learning web development. Trained to use AngularJS and Google Firebase to design and develop comprehensive full stack web applications, encompassing user-friendly interfaces, secure authentication, robust database management, and efficient integration of services.</p>
+                        <p className="leading-tight font-mono">Projects worked on -</p>
+                            <ul className="list-inside list-disc font-mono text-base">
+                                <li><span className="font-mono">Designed and developed a comprehensive full stack web application for an immigration agency, encompassing user-friendly interfaces, secure authentication, robust database management, and efficient integration of services.</span></li>
+                                <li><span className="font-mono">Crafted a sophisticated full-stack web solution for a school, harmonizing user-centric interfaces, fortified security protocols, efficient database handling, and seamless service integration</span></li>
+                            </ul>
                         </div>
                     </div>
                     <div className="mb-8 flex justify-between items-center w-full right-timeline">

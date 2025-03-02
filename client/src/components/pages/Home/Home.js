@@ -10,7 +10,7 @@ export default function Home() {
     const { fetchProjectsAction, projects } = useContext(projectContext);
 
     useEffect(() => {
-        const skillCategories = ["Web Development", "Android Development"]
+        const skillCategories = ["Web Development", "Android Development", "Data Engineering"]
         skillCategories.forEach(category => {
             fetchSkillsAction(category)
         });
@@ -20,9 +20,9 @@ export default function Home() {
 
 
     return (
-            <div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+            <div className="bg-gray-200 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
                 <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
-                    <div className="grid grid-cols-12 gap-1 h-screen">
+                    <div className="grid grid-cols-12 gap-1 h-full pb-5">
                         <div className="col-span-6">
                             <div className="flex justify-center mt-16">
                                 <div className="grid grid-row-1 gap-4 justify-center">
@@ -36,27 +36,29 @@ export default function Home() {
                                                 <h3 className="text-md text-start ms-16 font-mono">Full Stack Development</h3>
                                                 <ul className="text-start list-disc list-inside text-sm font-mono ms-16 mt-2">
                                                     {skillsByCategory["Web Development"]?.length > 0 ? (
-                                                    skillsByCategory["Web Development"].map((skill) => <li key={skill.name} className=""><Link to={`/skill/${skill?.name}`} className="hover:underline hover:underline-offset-4 hover:text-red-500">{skill.name}</Link></li>)
+                                                    skillsByCategory["Web Development"].map((skill) => <li key={skill.name} className=""><Link to={`/skill/${skill?.name}`} className="hover:underline hover:underline-offset-4 text-red-600 dark:text-red-400">{skill.name}</Link></li>)
                                                     ): (
-                                                        <p>Loading...</p>
+                                                        <p className="text-center text-2xl font-mono">Loading...</p>
                                                     )}
                                                 </ul>
                                             </li>
                                             <li className="flex flex-col">
                                                 <h3 className="text-md text-center ms-16 mt-4 font-mono">Python Data Engineering & Automation</h3>
                                                 <ul className="text-start list-disc list-inside text-sm font-mono ms-16 mt-2">
-                                                    <li>Pandas</li>
-                                                    <li>Openpyxl</li>
-                                                    <li>Azure Cloud</li>
+                                                    {skillsByCategory["Data Engineering"]?.length > 0 ? (
+                                                        skillsByCategory["Data Engineering"].map((skill) => <li key={skill.name} className=''><Link to={`/skill/${skill?.name}`} className='hover:underline hover:underline-offset-4 text-red-600 dark:text-red-400'>{skill.name}</Link></li>)
+                                                    ): (
+                                                        <p className="text-center text-2xl font-mono">Loading...</p>
+                                                    )}
                                                 </ul>
                                             </li>
                                             <li className="flex flex-col">
                                                 <h3 className="text-md text-start ms-16 mt-4 font-mono">Mobile App Development</h3>
                                                 <ul className="text-start list-disc list-inside text-sm font-mono ms-16 mt-2">
                                                     {skillsByCategory["Android Development"]?.length > 0 ? (
-                                                    skillsByCategory["Android Development"].map((skill) => <li key={skill.name} className=""><Link to={`/skill/${skill?.name}`} className="hover:border-gray-700 hover:underline-offset-4 hover:underline hover:text-red-500">{skill.name}</Link></li>)
+                                                    skillsByCategory["Android Development"].map((skill) => <li key={skill.name} className=""><Link to={`/skill/${skill?.name}`} className="hover:border-gray-700 hover:underline-offset-4 hover:underline text-red-600 dark:text-red-400">{skill.name}</Link></li>)
                                                 ): (
-                                                    <p>Loading...</p>
+                                                    <p className="text-center text-2xl font-mono">Loading...</p>
                                                 )}
                                                 </ul>
                                             </li>
@@ -69,7 +71,7 @@ export default function Home() {
                             <div className="flex justify-center mt-20">
                                 <div className="grid grid-row-4 gap-1 justify-center">
                                     <p className="text-lg font-mono row-span-1 p-5 border-2 rounded-xl border-blue-500 dark:border-blue-400">
-                                        Hi! I'm Vaibhav, a computer science graduate passionate about full-stack development and data engineering and workflow automation. I'm skilled in technologies like React, NodeJS and Python and I'm always looking for new challenges. I'm excited to share my work with you on this website. I hope you'll take some time to explore my projects, learn more about my skills, and get in touch if you have opportunities for me.
+                                        Hi! I'm Vaibhav, a computer science graduate passionate about full-stack development and data engineering for workflow automation. I'm skilled in technologies like React, NodeJS, Java and Python and I'm always looking for new challenges. I'm excited to share my work with you on this website. I hope you'll take some time to explore my projects, learn more about my skills, and get in touch if you have opportunities for me.
                                     </p>
                                 </div>
                             </div>
@@ -79,17 +81,17 @@ export default function Home() {
                                     <li className="flex flex-col mt-2"> 
                                         <h3 className="font-mono text-lg ms-40">Experience</h3>
                                         <ul className="list-disc list-inside text-start">
-                                            <li className='ms-48'><Link className='text-base font-mono hover:underline hover:underline-offset-4 hover:text-red-500' to="/">Azure Power India Pvt Ltd</Link></li>
-                                            <li className='ms-48'><Link className='text-base font-mono hover:underline hover:underline-offset-4 hover:text-red-500' to="/">Auribises Technologies Pvt Ltd</Link></li>
+                                            <li className='ms-48'><Link className='text-base font-mono hover:underline hover:underline-offset-4 text-red-600 dark:text-red-400' to="/experience">Azure Power India Pvt Ltd</Link></li>
+                                            <li className='ms-48'><Link className='text-base font-mono hover:underline hover:underline-offset-4 text-red-600 dark:text-red-400' to="/experience">Auribises Technologies Pvt Ltd</Link></li>
                                         </ul>
                                     </li>
                                     <li className="flex flex-col mt-2"> 
                                         <h3 className="font-mono text-lg ms-40">Projects</h3>
                                         <ul className="text-start list-disc list-inside text-sm font-mono mt-2">
                                             {projects?.length > 0 ? (
-                                                projects.map((project) => <li key={project.name} className='text-base font-mono text-start ms-48 '><Link to={`/project/${project?.name}`} className='text-base font-mono hover:underline hover:underline-offset-4 hover:text-red-500'>{project.name}</Link></li>)  
+                                                projects.map((project) => <li key={project.name} className='text-base font-mono text-start ms-48 '><Link to={`/project/${project?.name}`} className='text-base font-mono hover:underline hover:underline-offset-4 text-red-600 dark:text-red-400'>{project.name}</Link></li>)  
                                             ) : (
-                                                <p>Loading...</p>
+                                                <p className="text-center text-2xl font-mono">Loading...</p>
                                             )}
                                         </ul>
                                     </li>

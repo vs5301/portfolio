@@ -24,12 +24,15 @@ const createProjectCtrl = async (req, res, next) => {
             return await findSkill(skillName)
         }))
 
+        const imageUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${name}.webp`
+
         // Create project
         const project = await Project.create({
             name,
             link,
             description,
             timeline,
+            imageUrl: imageUrl,
             skills: skillIds
         })
 
@@ -97,12 +100,19 @@ const updateProjectCtrl = async (req, res, next) => {
     try {
         // Find id in params
         const { id } = req.params
-        const { skills, ...updateData } = req.body
+        const { skills, name } = req.body
     
          // convert skill names to skill ids
         const skillIds = await Promise.all(skills.map(async (skillName) => {
             return await findSkill(skillName)
         }))
+
+        const imageUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/${name}.web`
+        
+        const updateData = {
+            ...req.body,
+            imageUrl
+        }
 
         updateData.skills = skillIds
 

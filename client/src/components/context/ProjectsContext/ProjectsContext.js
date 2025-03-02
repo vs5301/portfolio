@@ -96,7 +96,7 @@ export const ProjectContextProvider = ({ children }) => {
         } catch (error) {
             dispatch({
                 type: PROJECT_FETCH_FAIL,
-                payload: error?.data?.resposne?.message
+                payload: error?.data?.response?.message
             })
         }
     }
